@@ -1,0 +1,19 @@
+<article class="card card-bookmark">
+<div class="card-left">
+    <header class="card-header">
+        <h2 class="card-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h2>
+    </header>
+
+    <div class="card-summary">
+        {{ with .Params.summary }}
+        <p>{{ . | markdownify }}</p>
+        {{ else }}{{ .Summary }}{{ end }}
+    </div>
+</div>
+
+<div class="card-right">
+	{{ partial "ico/ico-bookmark.html" . }}
+</div>
+</article>

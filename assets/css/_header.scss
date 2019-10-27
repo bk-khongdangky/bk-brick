@@ -1,0 +1,54 @@
+
+
+.header {
+	background: $tx;
+	.wrapper {
+		padding: 3rem 1rem 3.5rem;
+		display: grid;
+		grid-gap: 1rem;
+		grid-template-columns: 1fr 2fr;
+		color: #aaa;
+		a {
+			color: $wt;
+		}
+		@media (min-width:$hg) {
+			padding: 5rem 0;
+		}
+	}
+}
+
+.hbox {
+	@include box2(none,$wt);
+	padding: 1rem;
+}
+
+.site-nav {
+	ul li {
+		display: inline-block;
+		a::before {
+			content: "#";
+			color: #888;
+		}
+	}
+}
+
+.top-nav {
+	padding: 1rem;
+	margin-top: -3rem;
+	ul {
+		display: flex;
+		flex-flow: row wrap;
+		li {
+			margin-right: 1rem;
+			margin-bottom: 1rem;
+			a {
+				display: block;
+				@include box();
+			}
+		}
+	}
+	@media (min-width:$hg) {
+		padding: 1rem 0;
+	}
+}
+

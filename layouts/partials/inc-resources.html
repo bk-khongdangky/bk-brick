@@ -1,0 +1,56 @@
+{{ with .Resources.Match "**.md" }}
+    {{ range . }}
+    <div class="resource-entry">
+
+        <div class="src-title-group">
+            <div class="src-icon">{{ partial "ico/ico-markdown.html" . }}</div>
+            {{ if isset .Params "link" }}
+            <div class="src-title"><h4><a target="_blank" href='{{ index .Params "link" }}'>{{ .Title }}</a></h4></div>
+            {{ else }}
+            <div class="src-title"><h4>{{ .Title }}</h4></div>
+            {{ end }}
+        </div>
+
+
+        {{ if (isset .Params "gallery") }}
+        <div class='gallery-content c{{ index .Params "gallery" }}'>
+            {{ .Content }}
+        </div>
+        {{ else }}
+        <div class="src-content">
+            {{ .Content }}
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+{{ end }}
+
+<!-- list all attachment pdf files if any -->
+{{ with .Resources.Match "**.pdf" }}
+<div class="resource-entry">
+    <div class="src-title-group">
+        <div class="src-icon">{{ partial "ico/ico-pdf.html" . }}</div>
+        <div class="src-title"><h4>pdf resources</h4></div>
+    </div>
+	<div class="src-content">
+    {{ range . }}
+    <p><a target="blank" href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+    {{ end }}
+	</div>
+</div>
+{{ end }}
+
+<!-- list all attachment image files if any -->
+{{ with .Resources.ByType "image" }}
+<div class="resource-entry">
+    <div class="src-title-group">
+        <div class="src-icon">{{ partial "ico/ico-img.html" . }}</div>
+        <div class="src-title"><h4>image resources</h4></div>
+    </div>
+	<div class="src-content">
+    {{ range . }}
+    <p><a target="blank" href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+    {{ end }}
+	</div>
+</div>
+{{ end }}

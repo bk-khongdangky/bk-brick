@@ -1,0 +1,25 @@
+
+
+
+
+
+<article class="card card-default">
+<div class="card-left">
+    <header class="card-header">
+        <h2 class="card-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h2>
+    </header>
+
+    <div class="card-summary">
+        {{ with .Params.summary }}
+        <p>{{ . | markdownify }}</p>
+        {{ else }}{{ .Summary }}{{ end }}
+    </div>
+</div>
+
+<div class="card-right">
+<div class="ym"><time>{{ .Date.Format "2006/01" }}<br>{{ .Date.Format "Mon" | upper }}</time></div>
+<div class="dd"><time>{{ .Date.Format "02" }}</time></div>
+</div>
+</article>

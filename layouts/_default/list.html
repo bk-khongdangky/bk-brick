@@ -1,0 +1,14 @@
+{{ define "main" }}
+
+<main id="main" class="articles-list">
+    {{ $paginator := .Paginate (where .Site.RegularPages "Section" "not in" (slice "nsfw")) }}
+    {{ range $paginator.Pages }}
+    {{ .Render "article" }}
+    {{ end }}
+</main>
+
+{{ end }}
+
+{{ define "nav-bottom" }}
+{{ partial "pagination.html" . }}
+{{ end }}
